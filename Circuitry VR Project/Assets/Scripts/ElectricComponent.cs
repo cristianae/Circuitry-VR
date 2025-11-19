@@ -24,6 +24,16 @@ public class ElectricComponent : MonoBehaviour
     }
     public void activateWire(ActivateEventArgs args)
     {
-        wiringPool.addWired(args);
+        if(interactable.interactorsSelecting.Count > 0)
+        {
+            // Object is current selected when activated
+            // Add wire
+            wiringPool.addWired(args);
+        }
+        else
+        {
+            // Not selected when activated, remove wires
+            wiringPool.removeWired(args);
+        }
     }
 }

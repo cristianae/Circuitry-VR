@@ -13,10 +13,10 @@ TagManager:
   - UI
   - Spawner
   - Components
-  - 
-  - 
-  - 
-  - 
+  - Plug_Anode
+  - Plug_Cathode
+  - Socket_Pos
+  - Socket_Neg
   - 
   - 
   - 

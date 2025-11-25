@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
+//added
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
+
 public class ElectricComponent : MonoBehaviour
 {
-    private UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable interactable;
+    //   private UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable interactable;
+    private XRBaseInteractable interactable;
     [SerializeField] WiringPool wiringPool;
+
     void Start()
     {
         interactable = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();

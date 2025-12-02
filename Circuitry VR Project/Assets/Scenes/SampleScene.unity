@@ -238,6 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wiringPool: {fileID: 329215900}
+  componentName: 
 --- !u!114 &90640703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -613,6 +614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wiringPool: {fileID: 329215900}
+  componentName: 
 --- !u!114 &232496154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2000,6 +2002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wiringPool: {fileID: 329215900}
+  componentName: 
 --- !u!114 &872160751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3114,6 +3117,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4803614339566677342, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
   m_PrefabInstance: {fileID: 1254362822}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1359229749
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1359229750}
+  - component: {fileID: 1359229751}
+  m_Layer: 0
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1359229750
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359229749}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.8276196, y: -1.911863, z: 2.485115}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1359229751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359229749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39e6beaf3ca616a43a95aa106e293472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wiringPool: {fileID: 329215900}
+  requiredComponents:
+  - CubeComponent
+  - CubeComponent
+  - CubeComponent
 --- !u!1001 &1391748491
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3599,6 +3651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wiringPool: {fileID: 329215900}
+  componentName: 
 --- !u!114 &1531594155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3788,6 +3841,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wiringPool: {fileID: 329215900}
+  componentName: 
 --- !u!114 &1565011018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4295,7 +4349,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 4e-45, z: 6.25e-43, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 9.1835e-41, z: 0, w: -9.011492e+31}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -4655,6 +4709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wiringPool: {fileID: 329215900}
+  componentName: 
 --- !u!114 &2010461388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4849,6 +4904,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube Interactable (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6640387835271095783, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
+      propertyPath: m_TagString
+      value: Cube
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4890,6 +4949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wiringPool: {fileID: 329215900}
+  componentName: CubeComponent
 --- !u!1 &2102629066
 GameObject:
   m_ObjectHideFlags: 0
@@ -5409,3 +5469,4 @@ SceneRoots:
   - {fileID: 1037164542}
   - {fileID: 876630670}
   - {fileID: 329215901}
+  - {fileID: 1359229750}

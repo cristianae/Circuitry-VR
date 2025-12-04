@@ -11,6 +11,7 @@ public class ElectricComponent : MonoBehaviour
     //   private UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable interactable;
     private XRBaseInteractable interactable;
     [SerializeField] WiringPool wiringPool;
+    public string componentName;
 
     void Start()
     {

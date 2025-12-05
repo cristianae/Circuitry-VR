@@ -826,9 +826,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wiringPool: {fileID: 329215900}
+  successLights: []
+  errorLights: []
   requiredComponents:
   - Battery
-  - Switch
   - LED
   - Resistor
 --- !u!4 &258122755
@@ -1215,7 +1216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lampLight: {fileID: 0}
   lampRenderer: {fileID: 0}
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
   flashSpeed: 2
   isFlashing: 1
 --- !u!1 &423529120
@@ -1361,7 +1362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lampLight: {fileID: 0}
   lampRenderer: {fileID: 0}
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
   flashSpeed: 2
   isFlashing: 1
 --- !u!1001 &501476088
@@ -2096,7 +2097,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lampLight: {fileID: 0}
   lampRenderer: {fileID: 0}
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
   flashSpeed: 2
   isFlashing: 1
 --- !u!1 &872160748
@@ -2451,7 +2452,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lampLight: {fileID: 0}
   lampRenderer: {fileID: 0}
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
   flashSpeed: 2
   isFlashing: 1
 --- !u!1001 &924875303
@@ -2588,7 +2589,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lampLight: {fileID: 0}
   lampRenderer: {fileID: 0}
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
   flashSpeed: 2
   isFlashing: 1
 --- !u!4 &985866600 stripped
@@ -3112,7 +3113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lampLight: {fileID: 0}
   lampRenderer: {fileID: 0}
-  flashColor: {r: 1, g: 0, b: 0, a: 1}
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
   flashSpeed: 2
   isFlashing: 1
 --- !u!1001 &1230243596
@@ -9657,7 +9658,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: NaN, y: NaN, z: 1e-45, w: 9.036534e+15}
+  m_BoundingSphereOverride: {x: 0.000000037306044, y: 1.3563128e-19, z: 3.838434e+12, w: 1.5278524e+28}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

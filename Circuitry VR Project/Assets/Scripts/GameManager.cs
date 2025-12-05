@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] WiringPool wiringPool;
+    [SerializeField] List<FlashingLight> successLights;
+    [SerializeField] List<FlashingLight> errorLights;
     List<List<GameObject>> connections;
     List<List<GameObject>> internal_connections;
     List<GameObject> visit;
@@ -153,14 +155,19 @@ public class GameManager : MonoBehaviour
 
     void validate(List<object> loop)
     {
+        Debug.Log("Size= " + loop.Count);
         if (winFlag)
         {
+            Debug.Log("The player won, ignoring other loops.");
             return;
         }
 
         List<object> valid = new List<object>(loop);
         valid.RemoveAt(valid.Count - 1);
-
+        Debug.Log("Loop contents:");
+        foreach (var obj in valid){
+            Debug.Log(" - " + ((GameObject)obj).name);
+        }
         for(int i = 0; i < requiredComponents.Count; ++i)
         {
             for(int j = 0; j < valid.Count; ++j)
@@ -176,13 +183,42 @@ public class GameManager : MonoBehaviour
         if(valid.Count > 0)
         {
             Debug.Log("Fail");
+            TriggerFail();
         }
         else
         {
             Debug.Log("Level Complete");
             winFlag = true;
+            TriggerSuccess();
         }
     }
+
+    //Lights for level complete
+        void TriggerSuccess()
+    {
+        foreach (var light in successLights){
+            light.flashColor = Color.green; 
+            light.StartFlashing();
+        }
+    }
+    // Lights for level incomplete
+        void TriggerFail()
+    {
+        foreach (var light in errorLights){
+            light.flashColor = Color.red;
+            light.StartFlashing();
+        }
+    }
+        void StopAllLights()
+    {
+        foreach (var light in successLights){
+            light.StopFlashing();
+        }
+        foreach (var light in errorLights){
+            light.StopFlashing();
+        }
+    }
+
 
     /*
     def validate(loop):

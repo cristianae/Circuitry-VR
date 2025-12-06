@@ -10,15 +10,25 @@ public class ElectricComponent : MonoBehaviour
 {
     //   private UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable interactable;
     private XRBaseInteractable interactable;
+
     [SerializeField] WiringPool wiringPool;
 
     void Start()
     {
-        interactable = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>();
-        if (interactable != null){
+        //interactable = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable>(); <-- Replaced with the line below
+        interactable = GetComponent<XRBaseInteractable>();
+
+        if (interactable != null)
+        {
             interactable.activated.AddListener(activateWire);
         }
+        //added
+        else
+        {
+            Debug.LogWarning($"[ElectricComponent] No XRBaseInteractable found on {gameObject.name}");
+        }
     }
+
     void OnDestroy()
     {
         // Unsubscribe to prevent memory leaks

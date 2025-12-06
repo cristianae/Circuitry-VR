@@ -4,12 +4,14 @@ public class FlashingLight : MonoBehaviour
 {
     public Light lampLight;  //lamp light
     public Renderer lampRenderer;    //glow
-    public Color flashColor = Color.red;
+    public Color successColor = Color.green;
+    public Color failColor = Color.red;
     public float flashSpeed = 2f;    //flashing speed
     public bool isFlashing = false;
     private Color originalColor;
     private Color originalEmission;
     private Material lampMaterial;
+    public Color flashColor = Color.white;
 
     void Start()
     {

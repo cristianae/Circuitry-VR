@@ -12,6 +12,7 @@ public class ElectricComponent : MonoBehaviour
     private XRBaseInteractable interactable;
 
     [SerializeField] WiringPool wiringPool;
+    [SerializeField] public string componentName;
 
     void Start()
     {

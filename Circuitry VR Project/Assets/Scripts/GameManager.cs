@@ -5,11 +5,11 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] WiringPool wiringPool;
+    [SerializeField] List<FlashingLight> successLights;
+    [SerializeField] List<FlashingLight> errorLights;
     List<List<GameObject>> connections;
     List<List<GameObject>> internal_connections;
     List<List<GameObject>> omni_connections;
-    [SerializeField] List<FlashingLight> successLights;
-    [SerializeField] List<FlashingLight> errorLights;
     List<GameObject> visit;
     List<GameObject> seen;
     // Fill requiredComponents with strings that match needed items
@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
                 //Debug.Log("Loop found");
                 for(int i = 0; i < loops.Count; ++i)
                 {
-                    result = validate(loops[i]);
+                    bool result = validate(loops[i]);
                     if(result){
                         TriggerSuccess();
                     }
@@ -306,30 +306,22 @@ public class GameManager : MonoBehaviour
         return true;
     }
 
-    /*
-
-
-    */
-}
-
     //Lights for level complete
-        void TriggerSuccess()
-    {
+    void TriggerSuccess(){
         foreach (var light in successLights){
             light.flashColor = Color.green; 
             light.StartFlashing();
         }
     }
     // Lights for level incomplete
-        void TriggerFail()
-    {
+    void TriggerFail(){
         foreach (var light in errorLights){
             light.flashColor = Color.red;
             light.StartFlashing();
         }
     }
-        void StopAllLights()
-    {
+
+    void StopAllLights(){
         foreach (var light in successLights){
             light.StopFlashing();
         }

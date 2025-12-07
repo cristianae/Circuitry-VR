@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     List<List<GameObject>> connections;
     List<List<GameObject>> internal_connections;
     List<List<GameObject>> omni_connections;
+    [SerializeField] List<FlashingLight> successLights;
+    [SerializeField] List<FlashingLight> errorLights;
     List<GameObject> visit;
     List<GameObject> seen;
     // Fill requiredComponents with strings that match needed items
@@ -41,7 +43,13 @@ public class GameManager : MonoBehaviour
                 //Debug.Log("Loop found");
                 for(int i = 0; i < loops.Count; ++i)
                 {
-                    validate(loops[i]);
+                    result = validate(loops[i]);
+                    if(result){
+                        TriggerSuccess();
+                    }
+                    else{
+                        TriggerFail();
+                    }
                 }
             }
         }
@@ -302,4 +310,31 @@ public class GameManager : MonoBehaviour
 
 
     */
+}
+
+    //Lights for level complete
+        void TriggerSuccess()
+    {
+        foreach (var light in successLights){
+            light.flashColor = Color.green; 
+            light.StartFlashing();
+        }
+    }
+    // Lights for level incomplete
+        void TriggerFail()
+    {
+        foreach (var light in errorLights){
+            light.flashColor = Color.red;
+            light.StartFlashing();
+        }
+    }
+        void StopAllLights()
+    {
+        foreach (var light in successLights){
+            light.StopFlashing();
+        }
+        foreach (var light in errorLights){
+            light.StopFlashing();
+        }
+    }
 }

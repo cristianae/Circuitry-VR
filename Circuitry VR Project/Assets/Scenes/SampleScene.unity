@@ -373,6 +373,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wiringPool: {fileID: 329215900}
+  componentName: 
+  pairedNode: {fileID: 0}
+  omnidirectional: 0
+--- !u!65 &232496152 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 6699827027996077489, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
+  m_PrefabInstance: {fileID: 702317283}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &263698252
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1002,6 +1010,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 365257721316361150, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
+      propertyPath: m_Colliders.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 365257721316361150, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
+      propertyPath: m_Colliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 232496152}
+    - target: {fileID: 365257721316361150, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
       propertyPath: m_FirstFocusEntered.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -1091,7 +1107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6699827027996077489, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
       propertyPath: m_Size.x
-      value: 0.014801358
+      value: 0.011379553
       objectReference: {fileID: 0}
     - target: {fileID: 6699827027996077489, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
       propertyPath: m_Size.y
@@ -1107,7 +1123,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6699827027996077489, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
       propertyPath: m_Center.x
-      value: -0.00041877432
+      value: -0.00031609638
       objectReference: {fileID: 0}
     - target: {fileID: 6699827027996077489, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
       propertyPath: m_Center.y
@@ -1282,6 +1298,57 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84c3b747fe5ffb04598b614508b0f853, type: 3}
+--- !u!1 &767847018
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 767847020}
+  - component: {fileID: 767847019}
+  m_Layer: 0
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &767847019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767847018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39e6beaf3ca616a43a95aa106e293472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wiringPool: {fileID: 329215900}
+  requiredComponents:
+  - CubeComponent
+  - LEDAnode
+  - LEDCathode
+  - BatteryPos
+  - BatteryNeg
+--- !u!4 &767847020
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767847018}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.4507885, y: -6.7430153, z: 0.23826486}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &772903749
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1549,7 +1616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4803614339566677342, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0092
+      value: -0.01033
       objectReference: {fileID: 0}
     - target: {fileID: 4803614339566677342, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1663,6 +1730,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wiringPool: {fileID: 329215900}
+  componentName: BatteryNeg
+  pairedNode: {fileID: 986632779}
+  omnidirectional: 0
 --- !u!65 &861344121 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 6699827027996077489, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
@@ -2159,6 +2229,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wiringPool: {fileID: 329215900}
+  componentName: LEDCathode
+  pairedNode: {fileID: 0}
+  omnidirectional: 0
 --- !u!1 &921146399 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5229468493115560289, guid: 491da4920dca9674b94ffe67e2a9b2d4, type: 3}
@@ -2241,6 +2314,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wiringPool: {fileID: 329215900}
+  componentName: BatteryPos
+  pairedNode: {fileID: 0}
+  omnidirectional: 0
 --- !u!65 &986632787 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 6699827027996077489, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
@@ -2593,6 +2669,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wiringPool: {fileID: 329215900}
+  componentName: LEDAnode
+  pairedNode: {fileID: 882343955}
+  omnidirectional: 1
 --- !u!65 &1060913890 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 6699827027996077489, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
@@ -3526,7 +3605,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4803614339566677342, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.0071
+      value: 0.00997
       objectReference: {fileID: 0}
     - target: {fileID: 4803614339566677342, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3571,6 +3650,10 @@ PrefabInstance:
     - target: {fileID: 6640387835271095783, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
       propertyPath: m_Name
       value: PosEnd
+      objectReference: {fileID: 0}
+    - target: {fileID: 6699827027996077489, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7710728512711212885, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
       propertyPath: m_Enabled
@@ -4155,6 +4238,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wiringPool: {fileID: 0}
+  componentName: 
+  pairedNode: {fileID: 0}
+  omnidirectional: 0
 --- !u!1 &1815318735
 GameObject:
   m_ObjectHideFlags: 0
@@ -4230,7 +4316,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 6e-44, y: 3e-45, z: 2.808e-42, w: 0}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 4e-45, z: 6.694e-42, w: 7.5354866e+11}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -4551,6 +4637,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 365257721316361150, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
+      propertyPath: m_Colliders.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 365257721316361150, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
+      propertyPath: m_Colliders.Array.data[0]
+      value: 
+      objectReference: {fileID: 2010461393}
+    - target: {fileID: 365257721316361150, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
       propertyPath: m_FirstFocusEntered.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -4705,6 +4799,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wiringPool: {fileID: 329215900}
+  componentName: 
+  pairedNode: {fileID: 0}
+  omnidirectional: 0
 --- !u!114 &2010461388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4722,6 +4819,11 @@ MonoBehaviour:
   emissiveRenderer: {fileID: 1520911027}
   onColor: {r: 1, g: 0, b: 0, a: 1}
   emissionIntensity: 3
+--- !u!65 &2010461393 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 6699827027996077489, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
+  m_PrefabInstance: {fileID: 2010461377}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2046629158
 GameObject:
   m_ObjectHideFlags: 0
@@ -4887,6 +4989,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wiringPool: {fileID: 329215900}
+  componentName: CubeComponent
+  pairedNode: {fileID: 0}
+  omnidirectional: 0
 --- !u!1 &2102629066
 GameObject:
   m_ObjectHideFlags: 0
@@ -5353,3 +5458,4 @@ SceneRoots:
   - {fileID: 1037164542}
   - {fileID: 876630670}
   - {fileID: 329215901}
+  - {fileID: 767847020}

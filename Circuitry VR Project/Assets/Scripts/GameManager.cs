@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] WiringPool wiringPool;
     List<List<GameObject>> connections;
     List<List<GameObject>> internal_connections;
+    List<List<GameObject>> omni_connections;
     List<GameObject> visit;
     List<GameObject> seen;
     // Fill requiredComponents with strings that match needed items
@@ -16,7 +17,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         connections = wiringPool.getWireConnections();
-        internal_connections = new List<List<GameObject>>();
+        internal_connections = wiringPool.getInternalWires();
+        omni_connections = wiringPool.getOmniWires();
         visit = new List<GameObject>();
         seen = new List<GameObject>();
     }
@@ -26,7 +28,9 @@ public class GameManager : MonoBehaviour
     {
         // Get current connections list
         connections = wiringPool.getWireConnections();
-        // internal_connections = wiringPool.getInternalConnections();
+        internal_connections = wiringPool.getInternalWires();
+        omni_connections = wiringPool.getOmniWires();
+
         if(connections.Count > 0)
         {
             visit.Clear();
@@ -55,6 +59,16 @@ public class GameManager : MonoBehaviour
             }
             else if (connections[i][1] == node){
                 children.Add(connections[i][0]);
+            }
+        }
+
+        for(int i = 0; i < omni_connections.Count; ++i)
+        {
+            if (omni_connections[i][0] == node){
+                children.Add(omni_connections[i][1]);
+            }
+            else if (omni_connections[i][1] == node){
+                children.Add(omni_connections[i][0]);
             }
         }
         return children;
@@ -87,7 +101,7 @@ public class GameManager : MonoBehaviour
         }
 
         List<GameObject> child = getChildren(node);
-        // child.AddRange(getChildrenInternal(node));
+        child.AddRange(getChildrenInternal(node));
         List<List<object>> loops = new List<List<object>>();
         List<GameObject> updateChild = new List<GameObject>(child);
 
@@ -151,15 +165,20 @@ public class GameManager : MonoBehaviour
         return loops;
     }
 
-    void validate(List<object> loop)
+    bool validate(List<object> loop)
     {
         if (winFlag)
         {
-            return;
+            return true;
         }
 
         List<object> valid = new List<object>(loop);
         valid.RemoveAt(valid.Count - 1);
+
+        if (valid.Count != requiredComponents.Count){
+            Debug.Log("Incorrect number of parts in loop");
+            return false;
+        }
 
         for(int i = 0; i < requiredComponents.Count; ++i)
         {
@@ -175,45 +194,112 @@ public class GameManager : MonoBehaviour
         }
         if(valid.Count > 0)
         {
-            Debug.Log("Fail");
+            Debug.Log("Wrong components");
+            return false;
         }
-        else
-        {
+
+        // Check if components satisfy polarity rules
+        string direction_flag = "NULL";
+        bool direction_set = false;
+
+        for (int i = 0; i < loop.Count - 2; ++i){
+            if(direction_set){
+                break;
+            }
+            for(int j = 0; j < internal_connections.Count; ++j){
+                if(internal_connections[j][0] == ((GameObject)loop[i])){
+                    if(internal_connections[j][1] == ((GameObject)loop[i+1])){
+                        direction_flag = "RIGHT";
+                        direction_set = true;
+                        break;
+                    }
+                }
+                else if(internal_connections[j][1] == ((GameObject)loop[i])){
+                    if(internal_connections[j][0] == ((GameObject)loop[i+1])){
+                        direction_flag = "LEFT";
+                        direction_set = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        if(!direction_set){
+            for(int j = 0; j < internal_connections.Count; ++j){
+                if(internal_connections[j][0] == ((GameObject)loop[0])){
+                    if(internal_connections[j][1] == ((GameObject)loop[loop.Count - 2])){
+                        direction_flag = "LEFT";
+                        direction_set = true;
+                        break;
+                    }
+                }
+                else if(internal_connections[j][1] == ((GameObject)loop[0])){
+                    if(internal_connections[j][0] == ((GameObject)loop[loop.Count - 2])){
+                        direction_flag = "RIGHT";
+                        direction_set = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        Debug.Log("Direction flag: " + direction_flag);
+
+        if(!direction_set){
+            // No polar components used, loop valid
             Debug.Log("Level Complete");
             winFlag = true;
+            return true;
         }
+        else if(direction_flag == "RIGHT"){
+            for (int i = 0; i < loop.Count - 2; ++i){
+                for(int j = 0; j < internal_connections.Count; ++j){
+                    if(internal_connections[j][0] == ((GameObject)loop[i+1])){
+                        if(internal_connections[j][1] == ((GameObject)loop[i])){
+                            Debug.Log("Invalid polarity");
+                            return false;
+                        }
+                    }
+                }
+            }
+            for(int i = 0; i < internal_connections.Count; ++i){
+                if(internal_connections[i][0] == ((GameObject)loop[0])){
+                    if(internal_connections[i][1] == ((GameObject)loop[loop.Count - 2])){
+                        Debug.Log("Invalid polarity");
+                        return false;
+                    }
+                }
+            }
+        }
+        else if(direction_flag == "LEFT"){
+            for (int i = 0; i < loop.Count - 2; ++i){
+                for(int j = 0; j < internal_connections.Count; ++j){
+                    if(internal_connections[j][0] == ((GameObject)loop[i])){
+                        if(internal_connections[j][1] == ((GameObject)loop[i+1])){
+                            Debug.Log("Invalid polarity");
+                            return false;
+                        }
+                    }
+                }
+            }
+            for(int i = 0; i < internal_connections.Count; ++i){
+                if(internal_connections[i][0] == ((GameObject)loop[loop.Count - 2])){
+                    if(internal_connections[i][1] == ((GameObject)loop[0])){
+                        Debug.Log("Invalid polarity");
+                        return false;
+                    }
+                }
+            }
+        }
+
+        // Passed all checks, circuit valid
+        Debug.Log("Level Complete");
+        winFlag = true;
+        return true;
     }
 
     /*
-    def validate(loop):
-	length = len(loop) - 1
-	direction_flag = "NULL"
-	for i in range(0 , length -1):
-		if [loop[i], loop[i+1]] in edge_internal:
-			direction_flag = "RIGHT"
-			break
-		elif [loop[i+1],loop[i]] in edge_internal:
-			direction_flag = "LEFT"
-			break
-	if direction_flag == "NULL":
-		if [loop[0], loop[length - 1]] in edge_internal:
-			direction_flag = "LEFT"
-		elif [loop[length-1], loop[0]] in edge_internal:
-			direction_flag = "RIGHT"
-	if direction_flag == "NULL":
-		return "Circuit valid"
-	elif direction_flag == "RIGHT":
-		for i in range(0, length -1):
-			if [loop[i+1], loop[i]] in edge_internal:
-				return "Invalid circuit"
-		if [loop[0],loop[length -1]] in edge_internal:
-			return "Invalid circuit"
-	elif direction_flag == "LEFT":
-		for i in range(0, length -1):
-			if [loop[i], loop[i+1]] in edge_internal:
-				return "Invalid circuit"
-		if [loop[length-1],loop[0]] in edge_internal:
-			return "Invalid circuit"
-	return "Valid circuit"
+
+
     */
 }

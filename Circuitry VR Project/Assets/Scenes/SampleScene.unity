@@ -686,14 +686,14 @@ PrefabInstance:
       addedObject: {fileID: 104738345}
     - targetCorrespondingSourceObject: {fileID: 100002, guid: 58737df6d40bb7442ae753b50a911075, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 263698254}
+      addedObject: {fileID: 263698259}
   m_SourcePrefab: {fileID: 100100000, guid: 58737df6d40bb7442ae753b50a911075, type: 3}
 --- !u!4 &263698253 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 58737df6d40bb7442ae753b50a911075, type: 3}
   m_PrefabInstance: {fileID: 263698252}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &263698254
+--- !u!114 &263698259
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -705,8 +705,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291be9bb9b9404f1094253c075d424b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foamSpray: {fileID: 0}
-  controller: {fileID: 0}
+  foamSpray: {fileID: 1306165441}
+  grabInteractable: {fileID: 104738345}
+  triggerAction: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!1001 &267546367
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4733,7 +4734,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -10687,7 +10688,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 6e-44, z: 1.5e-44, w: 6.477e-42}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 6e-44}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

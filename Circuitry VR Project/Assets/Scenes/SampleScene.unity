@@ -1937,8 +1937,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wiringPool: {fileID: 329215900}
-  successLights: []
-  errorLights: []
+  allLights:
+  - {fileID: 393200407}
+  - {fileID: 921146403}
+  - {fileID: 838069848}
+  - {fileID: 442673479}
+  - {fileID: 968891189}
+  - {fileID: 1179353475}
   requiredComponents:
   - LEDCathode
   - LEDAnode
@@ -2157,7 +2162,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10682,7 +10687,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 3e-45, z: 4.769e-42, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 6e-44, z: 1.5e-44, w: 6.477e-42}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

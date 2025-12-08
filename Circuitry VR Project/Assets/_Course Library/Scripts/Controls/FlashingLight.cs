@@ -76,4 +76,16 @@ public class FlashingLight : MonoBehaviour
             lampMaterial.SetColor("_EmissionColor", originalEmission);
         }
     }
+    public void SetStaticColor(Color c)
+{
+    isFlashing = false;
+    if (lampLight != null) lampLight.color = c;
+    if (lampMaterial != null)
+    {
+        lampMaterial.color = c;
+        if (lampMaterial.HasProperty("_EmissionColor"))
+            lampMaterial.SetColor("_EmissionColor", c);
+    }
+}
+
 }

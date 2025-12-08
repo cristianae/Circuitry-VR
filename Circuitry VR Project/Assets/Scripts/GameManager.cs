@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
    List<GameObject> seen;
    // Fill requiredComponents with strings that match needed items
    [SerializeField] List<string> requiredComponents;
+   [SerializeField] AudioSource failAudio;
+   [SerializeField] AudioSource winAudio;
    bool winFlag = false;
    // Start is called before the first frame update
    void Start()
@@ -23,6 +25,7 @@ public class GameManager : MonoBehaviour
        omni_connections = wiringPool.getOmniWires();
        visit = new List<GameObject>();
        seen = new List<GameObject>();
+       
    }
 
 
@@ -347,25 +350,47 @@ public class GameManager : MonoBehaviour
 
    //Lights for level complete
    void TriggerSuccess(){
-       foreach (var light in allLights){
-           light.flashColor = Color.green;
-           light.StartFlashing();
-       }
-   }
+    if (failAudio != null && failAudio.isPlaying)
+        failAudio.Stop();
+
+    if (winAudio != null){
+        if (!winAudio.isPlaying)
+            winAudio.Play();
+    }
+    foreach (var light in allLights){
+        light.flashColor = Color.green;
+        light.StartFlashing();
+    }
+}
+
+
    // Lights for level incomplete
    void TriggerFail(){
-       foreach (var light in allLights){
-           light.flashColor = Color.red;
-           light.StartFlashing();
-       }
-   }
+    if (winAudio != null && winAudio.isPlaying)
+        winAudio.Stop();
+
+    if (failAudio != null){
+        if (!failAudio.isPlaying)
+            failAudio.Play();
+    }
+    foreach (var light in allLights){
+        light.flashColor = Color.red;
+        light.StartFlashing();
+    }
+}
+
 
 
    void StopAllLights(){
        foreach (var light in allLights){
            light.StopFlashing();
        }
-   }
-}
+       if (failAudio != null && failAudio.isPlaying)
+        failAudio.Stop();
+
+        if (winAudio != null && winAudio.isPlaying)
+            winAudio.Stop();
+        }
+    }
 }
 

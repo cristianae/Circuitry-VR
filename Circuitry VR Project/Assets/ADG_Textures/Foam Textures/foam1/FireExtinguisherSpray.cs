@@ -1,18 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.InputSystem;
+
 
 public class FireExtinguisherSpray : MonoBehaviour
 {
     public ParticleSystem foamSpray;
-    public ActionBasedController controller;
+    public UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable grabInteractable;
+    public InputActionReference triggerAction;
 
-    // Update is called once per frame
-    void Update()
+    private bool isHeld = false;
+
+    private void Awake()
     {
-        float triggerValue = controller.activateAction.action.ReadValue<float>();
-        //when the trigger is pressed by the user
+        grabInteractable.selectEntered.AddListener(_ => isHeld = true);
+        grabInteractable.selectExited.AddListener(_ => isHeld = false);
+    }
+
+    private void Update()
+    {
+        if (!isHeld) 
+        {
+            if (foamSpray.isPlaying)
+                foamSpray.Stop();
+            return;
+        }
+
+        float triggerValue = triggerAction.action.ReadValue<float>();
+
         if (triggerValue > 0.1f)
         {
             if (!foamSpray.isPlaying)

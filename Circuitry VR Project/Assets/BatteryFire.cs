@@ -8,12 +8,24 @@ public class BatteryFire : MonoBehaviour
     [SerializeField] GameObject fireEffect;
     [SerializeField] GameObject positiveEnd;
     [SerializeField] GameObject negativeEnd;
-
+    bool stopFire = false;
+  
     // Update is called once per frame
     void Update()
-    {
+    {   
         bool circuitComplete = IsConnected(positiveEnd, negativeEnd);
-        fireEffect.SetActive(circuitComplete);
+        if(!stopFire){
+            fireEffect.SetActive(circuitComplete);
+        }
+        else
+        {
+            fireEffect.SetActive(false);
+        }
+    }
+    public void DisableFire()
+    {
+        stopFire = true;
+        fireEffect.SetActive(false);
     }
 
     bool IsConnected(GameObject start, GameObject end)

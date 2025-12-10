@@ -2772,7 +2772,7 @@ MonoBehaviour:
   wiringPool: {fileID: 329215900}
   componentName: BatteryNeg
   pairedNode: {fileID: 986632779}
-  omnidirectional: 1
+  omnidirectional: 0
 --- !u!65 &861344121 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 6699827027996077489, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
@@ -4102,7 +4102,7 @@ MonoBehaviour:
   wiringPool: {fileID: 329215900}
   componentName: LEDAnode
   pairedNode: {fileID: 882343955}
-  omnidirectional: 1
+  omnidirectional: 0
 --- !u!65 &1060913890 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 6699827027996077489, guid: 72138a47ec7b8714c91aa39dcdf3b714, type: 3}
@@ -11229,7 +11229,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: NaN, y: 4.114276e-36, z: 1e-45, w: 2.3705155e+36}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 3e-45, z: 6.786e-42, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

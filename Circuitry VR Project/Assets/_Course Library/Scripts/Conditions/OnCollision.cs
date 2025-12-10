@@ -1,10 +1,6 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.Events;
-
-/// <summary>
-/// Calls functionality when a collision occurs
-/// </summary>
 public class OnCollision : MonoBehaviour
 {
     [Serializable] public class CollisionEvent : UnityEvent<Collision> { }
@@ -12,7 +8,7 @@ public class OnCollision : MonoBehaviour
     // When the object enters a collision
     public CollisionEvent OnEnter = new CollisionEvent();
 
-    // When the object exits a collision
+    // exit collision
     public CollisionEvent OnExit = new CollisionEvent();
 
     private void OnCollisionEnter(Collision collision)

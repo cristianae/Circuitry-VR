@@ -48,32 +48,30 @@ public class GameManager : MonoBehaviour
            List<List<object>> loops = search(connections[0][0]);
            if(loops.Count > 0)
            {
-               //Debug.Log("Loop found");
-               if (loops.Count == 0)
-               {
-                   StopAllLights();
-                   return;
-               }
-
-
-               // If more than 1 loop exists, it's considered a fail
-               if (loops.Count > 1)
-               {
-                   TriggerFail();
-                   return;
-               }
-
-
                // Now exactly 1 loop -> validate it
-               bool loopIsValid = validate(loops[0]);
-
-
-               if (loopIsValid)
-                   TriggerSuccess();
-               else
-                   TriggerFail();
+                bool loopIsValid = false;
+                for(int i = 0; i < loops.Count; ++i)
+                {
+                    loopIsValid = validate(loops[i]);
+                    if (loopIsValid){
+                        break;
+                    }
+                }
+                if (loopIsValid){
+                    Debug.Log("Loop was valid");
+                    TriggerSuccess();
+                }
+                else{
+                    TriggerFail();
+                }
+            
+            
+           }
        }
-
+        else
+        {
+            StopAllLights();
+        }
    }
 
 
@@ -215,9 +213,10 @@ public class GameManager : MonoBehaviour
        List<object> valid = new List<object>(loop);
        valid.RemoveAt(valid.Count - 1);
 
-
        if (valid.Count != requiredComponents.Count){
-           Debug.Log("Incorrect number of parts in loop");
+            Debug.Log("Incorrect number of parts in loop");
+            Debug.Log(valid.Count);
+            Debug.Log(requiredComponents.Count);
            return false;
        }
 
@@ -297,7 +296,7 @@ public class GameManager : MonoBehaviour
            //Debug.Log("Level Complete");
            //winFlag = true;
            //return true;
-           return false;
+           return true;
        }
        else if(direction_flag == "RIGHT"){
            for (int i = 0; i < loop.Count - 2; ++i){
@@ -350,8 +349,9 @@ public class GameManager : MonoBehaviour
 
    //Lights for level complete
    void TriggerSuccess(){
-    if (failAudio != null && failAudio.isPlaying)
+    if (failAudio != null && failAudio.isPlaying){
         failAudio.Stop();
+    }
 
     if (winAudio != null){
         if (!winAudio.isPlaying)
@@ -385,10 +385,11 @@ public class GameManager : MonoBehaviour
        foreach (var light in allLights){
            light.StopFlashing();
        }
-       if (failAudio != null && failAudio.isPlaying)
+       if (failAudio != null && failAudio.isPlaying){
         failAudio.Stop();
+       }
 
-        if (winAudio != null && winAudio.isPlaying)
+        if (winAudio != null && winAudio.isPlaying){
             winAudio.Stop();
         }
     }

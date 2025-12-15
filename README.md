@@ -9,7 +9,7 @@
 - Complete the wiring task.
 - Observe flashing lights and audio feedback.
 - Trigger the battery fire (by wiring the positive and negative ends of the battery) and extinguish it.
-To pick up components, aim at the center mass of the object and use the grab button to pick up.
+-To pick up components, aim at the center mass of the object and use the grab button to pick up.
 - To create a wire connection, aim at the end of the component / wire. Use the grab button to select the end (the aim locator will lock to the attachment point) and while grabbed, use the trigger to activate. The first wire connection will begin at the component and remain attached to the controller until a second connection is made.
 - To remove a wire connection, hover over the attachment point and activate with the trigger without grabbing the component.
 - To use the fire extinguisher, grab the extinguisher and then use the trigger to activate the foam

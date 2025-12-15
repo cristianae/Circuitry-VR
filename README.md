@@ -1,8 +1,17 @@
 # Circuitry VR
 
-## Setup instructions
-To run this project do the following:
-Follow these steps to open and run the project correctly:
+## How to Run (APK)
+1. Download the APK from the Executable folder.
+2. Install on Meta Quest 3.
+3. Launch the application from Unity in the headset.
+
+## How to Test
+- Complete the wiring task.
+- Observe flashing lights and audio feedback.
+- Trigger the battery fire (by wiring the positive and negative ends of the battery) and extinguish it.
+
+## Setup instructions for Unity
+To open and run this project in Unity, follow the steps below:
 
 1. Install Unity Hub
    - Recommended Unity version: 2022.3 LTS
@@ -23,6 +32,15 @@ Follow these steps to open and run the project correctly:
 6. In XR Plug-in Management, make sure OpenXR is enabled for Android.
 
 7. Build & Run when you click at the top of the file. Make sure your Meta Quest 3 is connected with a USB Meta Quest Link.
+
+## Features
+- Circuit components
+- Interactive circuit wiring system
+- Visual feedback from flashing lights
+- Audio feedback from fire and flashing lights
+- Battery fire hazard triggered by incorrect wiring
+- Fire extinguisher to extinguish the fire
+- Polarity Endpoints
 
 ## Authors
 - Cristiana Eagen

@@ -10,6 +10,10 @@
 - Observe flashing lights and audio feedback.
 - Trigger the battery fire (by wiring the positive and negative ends of the battery) and extinguish it.
 
+## Demo Videos inside the Videos folder
+- Outside View Video
+- Inside Video (In-Headset Screen Recording)
+
 ## Setup instructions for Unity
 To open and run this project in Unity, follow the steps below:
 
